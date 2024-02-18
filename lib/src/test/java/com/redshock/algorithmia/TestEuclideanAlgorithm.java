@@ -28,4 +28,10 @@ public class TestEuclideanAlgorithm {
         int hcf = EuclideanAlgorithm.run(182664, 155052);
         assertEquals(2124, hcf);
     }
+
+    @Test
+    public void testNoRemainder(){
+        int hcf = EuclideanAlgorithm.run(100, 50);
+        assertEquals(50, hcf);
+    }
 }
