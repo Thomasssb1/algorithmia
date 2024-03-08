@@ -2,8 +2,9 @@ package com.redshock.algorithmia;
 
 import com.redshock.algorithmia.exceptions.NoPossibleSolutionError;
 import com.redshock.algorithmia.exceptions.NonZeroError;
+import com.redshock.algorithmia.maths.Solution;
+import com.redshock.algorithmia.maths.methods.EuclideanAlgorithm;
 import com.redshock.algorithmia.maths.methods.LinearDiophantine;
-import com.redshock.algorithmia.maths.UnknownValue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterAll;
@@ -25,7 +26,7 @@ public class TestLinearDiophantine {
 
     @Test
     public void testLinearDiophantine1(){
-        HashMap<String, Integer> xy = new HashMap<String, Integer>(){};
+        Solution xy = null;
         try {
             LinearDiophantine test = new LinearDiophantine(630, 132, 6);
             try {
@@ -36,7 +37,7 @@ public class TestLinearDiophantine {
         } catch (NonZeroError e){
             System.out.println("Error: " + e.getMessage());
         } finally {
-            assertEquals(xy, new HashMap<String, Integer>(){{put("x", -9); put("y", 43);}});
+            assertEquals(xy, new Solution(-9, 43, 6 / EuclideanAlgorithm.run(630, 132)));
         }
     }
 

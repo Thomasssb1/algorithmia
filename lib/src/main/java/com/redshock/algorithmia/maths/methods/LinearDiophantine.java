@@ -2,6 +2,7 @@ package com.redshock.algorithmia.maths.methods;
 
 import com.redshock.algorithmia.exceptions.NonZeroError;
 import com.redshock.algorithmia.exceptions.NoPossibleSolutionError;
+import com.redshock.algorithmia.maths.Solution;
 
 import java.util.HashMap;
 
@@ -10,8 +11,16 @@ import java.util.HashMap;
  * ax + by = c
  */
 public class LinearDiophantine {
+    /** variable for ax + by = c */
     private int a, b, c;
 
+    /**
+     *
+     * @param a first integer
+     * @param b second integer
+     * @param c third integer result of ax + by
+     * @throws NonZeroError if a and b are both zero
+     */
     public LinearDiophantine(int a, int b, int c) throws NonZeroError {
         if (a == 0 && b == 0){
             throw new NonZeroError("a and b cannot be zero");
@@ -21,10 +30,12 @@ public class LinearDiophantine {
         this.c = c;
     }
 
+    /** prints in the format ax + by = c */
     @Override
     public String toString() {
         return a + "x + " + b + "y = " + c;
     }
+
 
     public int getA() {
         return a;
@@ -35,7 +46,13 @@ public class LinearDiophantine {
     public int getC() {
         return c;
     }
-    
+
+    /**
+     * @param a first integer
+     * @param b second integer
+     * @param c third integer result of ax + by
+     * @throws NonZeroError if a and b are both zero
+     */
     public void update(int a, int b, int c) throws NonZeroError {
         if (a == 0 && b == 0){
             throw new NonZeroError("a and b cannot be zero");
@@ -43,14 +60,22 @@ public class LinearDiophantine {
         this.a = a; this.b = b; this.c = c;
     }
 
-
-    public HashMap<String, Integer> solve() throws NoPossibleSolutionError {
+    /**
+     * Solve the linear diophantine equation to find the unknown variables x and y
+     * @return the general and particular solution to the linear diophantine equation x and y
+     * @throws NoPossibleSolutionError if there are no possible integer solutions
+     */
+    public Solution solve() throws NoPossibleSolutionError {
         int hcf = EuclideanAlgorithm.run(a, b);
         // note that it does work if it is a factor of hcf
-        if (hcf != c) {
-            throw new NoPossibleSolutionError("No possible solution for " + this.toString());
+        if (c % hcf != 0) {
+            throw new NoPossibleSolutionError("No possible integer solutions for " + this);
         }
-        return EuclideanAlgorithm.extended(a, b);
+        int factor = c / hcf;
+        HashMap<String, Integer> xy = EuclideanAlgorithm.extended(a, b);
+        return new Solution(
+                xy.get("x"), xy.get("y"), factor
+        );
     }
 
     public static void main(String[] args){
@@ -58,7 +83,8 @@ public class LinearDiophantine {
             LinearDiophantine test = new LinearDiophantine(630, 132, 6);
             System.out.println(test);
             try {
-                HashMap<String, Integer> xy = test.solve();
+                Solution xy = test.solve();
+                System.out.println(xy);
             } catch (NoPossibleSolutionError e){
                 System.out.println("Error: " + e.getMessage());
             }
