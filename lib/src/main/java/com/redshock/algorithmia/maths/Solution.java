@@ -5,7 +5,7 @@ package com.redshock.algorithmia.maths;
  */
 public class Solution {
     /** general solution of the given linear diophantine equation */
-    private int general;
+    private General general;
     /** particular solution of the given linear diophantine equation */
     private Particular particular;
 
@@ -14,9 +14,9 @@ public class Solution {
      * @param y unknown variable y
      * @param factor factor to multiply the particular solution (c/h provided h is a factor of c)
      */
-    public Solution(int x,  int y, int factor) {
+    public Solution(int x,  int y, int a, int b, int factor) {
         // temporary
-        this.general = x;
+        this.general = new General(x, y, a, b, factor);
         this.particular = new Particular(x * factor, y * factor);
     }
 
@@ -30,7 +30,7 @@ public class Solution {
         Solution solution = (Solution) obj;
         return general == solution.general && particular.equals(solution.particular);
     }
-    public int getGeneral() {
+    public General getGeneral() {
         return general;
     }
 

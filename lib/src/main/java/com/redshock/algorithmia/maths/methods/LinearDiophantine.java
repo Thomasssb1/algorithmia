@@ -74,7 +74,7 @@ public class LinearDiophantine {
         int factor = c / hcf;
         HashMap<String, Integer> xy = EuclideanAlgorithm.extended(a, b);
         return new Solution(
-                xy.get("x"), xy.get("y"), factor
+                xy.get("x"), xy.get("y"), a, b, factor
         );
     }
 
