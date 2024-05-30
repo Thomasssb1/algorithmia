@@ -1,6 +1,6 @@
 package com.redshock.algorithmia.maths;
 
-public class General() {
+public class General {
     private int x;
     private int y;
     private int a;
@@ -13,6 +13,26 @@ public class General() {
         this.a = a;
         this.b = b;
         this.factor = factor;
+    }
+
+    int getX() {
+        return x;
+    }
+
+    int getY() {
+        return y;
+    }
+
+    int getA() {
+        return a;
+    }
+
+    int getB() {
+        return b;
+    }
+
+    int getFactor() {
+        return factor;
     }
 
     public int subsituteK(int k, boolean isX) {

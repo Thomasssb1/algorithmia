@@ -8,7 +8,22 @@ package com.redshock.algorithmia.maths;
  * @param x x value of the particular solution
  * @param y y value of the particular solution
  */
-public record Particular(int x, int y) {
+public class Particular {
+
+    private int x, y;
+
+    public Particular(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    int getX() {
+        return x;
+    }
+
+    int getY() {
+        return y;
+    }
 
     /**
      * prints in the format x = x, y = y
