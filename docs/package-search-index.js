@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.redshock.algorithmia.exceptions"},{"l":"com.redshock.algorithmia.maths"},{"l":"com.redshock.algorithmia.maths.methods"}];updateSearchResults();
