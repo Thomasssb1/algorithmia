@@ -28,6 +28,10 @@ jobs:
         run: |
           javadoc -d javadoc -sourcepath lib/src/main/java -subpackages com.redshock.algorithmia  # Adjust the package name and source path
 
+      - name: Rename javadoc folder
+        run: |
+          mv javadoc/ docs/
+
         # Configure git user (needed to commit)
       - name: Configure Git
         run: |
@@ -43,6 +47,6 @@ jobs:
         # Add, commit, and push the generated Javadoc files
       - name: Commit and push Javadoc
         run: |
-          git add javadoc/
+          git add docs/
           git commit -m "Update Javadoc"
           git push origin javadoc --force
