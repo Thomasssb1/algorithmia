@@ -20,6 +20,9 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
+          distribution: 'adoptopenjdk'
+          architecture: x64
+          check-latest: false
 
       - name: Generate Javadoc
         run: |
