@@ -32,6 +32,17 @@ public class Particular {
         return y;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Particular particular = (Particular) obj;
+        return this.getX() == particular.getX() &&
+                this.getY() == particular.getY();
+    }
+
     /**
      * prints in the format x = x, y = y
      */

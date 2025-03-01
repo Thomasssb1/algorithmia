@@ -27,8 +27,13 @@ public class Solution {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
         Solution solution = (Solution) obj;
-        return general == solution.general && particular.equals(solution.particular);
+        return this.getGeneral().equals(solution.getGeneral()) &&
+                this.getParticular().equals(solution.getParticular());
     }
     public General getGeneral() {
         return general;

@@ -37,7 +37,8 @@ public class TestLinearDiophantine {
         } catch (NonZeroError e){
             System.out.println("Error: " + e.getMessage());
         } finally {
-            assertEquals(xy, new Solution(-9, 43, 6 / EuclideanAlgorithm.run(630, 132)));
+            int factor = 6 / EuclideanAlgorithm.run(630, 132);
+            assertEquals(xy, new Solution(-9, 43, 630, 132, factor));
         }
     }
 

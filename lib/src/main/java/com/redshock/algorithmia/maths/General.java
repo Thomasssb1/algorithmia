@@ -35,8 +35,22 @@ public class General {
         return factor;
     }
 
-    public int subsituteK(int k, boolean isX) {
+    public int substituteK(int k, boolean isX) {
         return isX ? x + b/factor * k : y - a/factor * k;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        General general = (General) obj;
+        return this.getX() == general.getX() &&
+                this.getY() == general.getY() &&
+                this.getA() == general.getA() &&
+                this.getB() == general.getB() &&
+                this.getFactor() == general.getFactor();
     }
 
     @Override
