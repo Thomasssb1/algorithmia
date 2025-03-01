@@ -44,6 +44,6 @@ jobs:
         # Add, commit, and push the generated Javadoc files
       - name: Commit and push Javadoc
         run: |
-          git add javadoc/
+          git add javadoc/javadoc/
           git commit -m "Update Javadoc"
           git push origin javadoc --force
